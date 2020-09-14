@@ -1,10 +1,35 @@
+
 def intersection(arrays):
     """
     YOUR CODE HERE
     """
-    # Your code here
+    ht = {}
+    results = []
 
-    return result
+    # Add all array elements at first index to hash table to compare
+    for x in range(len(arrays[0])):
+        ht[arrays[0][x]] = x
+    
+    # Check to see if the keys exist in the next list and if it does append value to results
+    for x in range(1, len(arrays)):
+
+        # Compare 1st list to second list and append intersection values to results
+        if x == 1:
+            for y in range(len(arrays[x])):
+                val = arrays[x][y]
+                if ht.get(val) != None:
+                    if val not in results:
+                        results.append(val)
+            
+            # If results dont exist in other lists then remove the value
+            else:
+                for z in range(len(results)):
+                    if results[z] not in arrays[x]:
+                        del results[z]
+                    else:
+                        continue
+            
+    return results
 
 
 if __name__ == "__main__":

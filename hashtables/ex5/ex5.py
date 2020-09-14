@@ -1,3 +1,4 @@
+
 # Your code here
 
 
@@ -6,9 +7,19 @@ def finder(files, queries):
     """
     YOUR CODE HERE
     """
-    # Your code here
+    ht = {}
+    results = []
 
-    return result
+    for x in range(len(files)):
+        for y in range(len(files[x])):
+            if files[x][-y] == "/":
+                ht[files[x][-y+1:]] = files[x]
+    
+    for x in queries:
+        if ht.get(x) != None:
+            results.append(ht.get(x))
+
+    return results
 
 
 if __name__ == "__main__":
